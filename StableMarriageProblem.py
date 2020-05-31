@@ -10,16 +10,16 @@ for i in range(n):
 
 # Uncomment this to have own prefernce list.
 # m and w each should have distinct values of preferences
-m = np.array([ [3,2,1,0],
-               [3,1,2,0],
-               [1,2,3,0],
-               [3,1,2,0] ])
+w = np.array([ [3,1,2,0],
+               [3,2,0,1],
+               [0,2,1,3],
+               [3,1,0,2] ])
 
-w = np.array([ [3,2,1,0],
-               [2,1,3,0],
-               [1,2,3,0],
+m = np.array([ [3,1,2,0],
+               [3,2,0,1],
+               [1,0,2,3],
                [2,1,0,3] ])
-n = min(len(m), len(w))
+n = len(m)
 
 ##### Initialize matches with zeroes #####
 matches = np.empty((n,2), dtype = int)
@@ -48,6 +48,12 @@ while -1 in matches[:, 1]:
             matches[i][1] = m[i][j]
             break
 
-print("Matches are:")
+print("Men preferences are:")
+for i in range(len(m)):
+    print(i, "-", m[i])
+print("\nWomen preferences are:")
+for i in range(len(w)):
+    print(i, "-", w[i])
+print("\nMatches obtained are:")
 for x, y in matches:
     print("{} -> {}".format(x, y))
